@@ -1,0 +1,59 @@
+{
+	"info": {
+		"_postman_id": "f774b0f0-ff45-4017-8d29-cb7b6151e5a5",
+		"name": "Notes API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "43658247",
+		"_collection_link": "https://ruslan-3862861.postman.co/workspace/Ruslan's-Workspace~1af4c797-ab0d-41e6-8873-26ddd4eafa3f/collection/43658247-f774b0f0-ff45-4017-8d29-cb7b6151e5a5?action=share&source=collection_link&creator=43658247"
+	},
+	"item": [
+		{
+			"name": "POST new note",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "GET note by ID",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE note by ID",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "PATCH title or content",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "GET all notes",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "PUT update note's title and content by ID",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		}
+	]
+}
