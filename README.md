@@ -1,18 +1,41 @@
 # 📝 Notes REST API
 
-This is a simple RESTful API for managing notes, built with **Java**, **Spring Boot**, **PostgreSQL**, and **Flyway**.  
-It supports basic CRUD operations and returns JSON responses.  
-The project follows an *API-first* approach.
+## 📘 Project Overview
 
-## ✅ Features
+**What:**  
+A simple REST API for managing personal notes. Users can create, read, update, partially update, and delete notes using HTTP requests.
 
-- Create new notes  
-- Retrieve notes by ID  
-- List all notes  
-- Update entire notes (PUT)  
-- Partially update notes (PATCH)  
-- Delete notes  
+**Why:**  
+Built as part of a learning journey to gain hands-on experience with backend development, REST principles, and working with PostgreSQL and Spring Boot.
+
+**Who:**  
+Developed by Ruslan Lomaka — Java learner exploring backend development through real projects and Postman tears of joy.
+
+
+
+## ✨ Features
+
+- Create new notes
+- Retrieve all or single note by ID
+- Update note (PUT)
+- Partially update note (PATCH)
+- Delete note
 - Returns proper HTTP status codes and error messages
+- Uses DTO for PATCH requests
+- Postman collection for testing included
+
+
+
+## 🛠 Tech Stack
+
+- **Java 17**
+- **Spring Boot**
+- **Spring Data JPA**
+- **PostgreSQL**
+- **Flyway** (for DB migration)
+- **Lombok**
+- **Postman** (for API testing)
+- **Gradle**
 
 ## 📬 API Endpoints
 
@@ -44,3 +67,9 @@ CREATE USER notes_user WITH PASSWORD 'yourpassword';
 GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO notes_user;
 GRANT ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA public TO notes_user;
 GRANT ALL PRIVILEGES ON ALL FUNCTIONS IN SCHEMA public TO notes_user;
+```
+## 🧪 Postman Testing
+
+Use the following Postman collection to test the API:
+
+📫 [Notes API Postman Collection](https://github.com/RuslanLomaka/RESTAPINotes/blob/master/Notes%20API.postman_collection.json)
