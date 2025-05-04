@@ -1,8 +1,9 @@
 package com.lomaka.notes.controller;
 
-import com.lomaka.notes.entity.Note;
-import com.lomaka.notes.dto.NoteDto;
+import com.lomaka.notes.dto.NoteDtoRequest;
+import com.lomaka.notes.dto.NoteDtoRespond;
 import com.lomaka.notes.service.NoteService;
+import java.util.List;
 import java.util.Map;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -22,27 +23,27 @@ public class NoteController {
     private final NoteService noteService;
 
     @PostMapping
-    public Note createNote(@RequestBody Note note) {
-        return noteService.createNote(note);
+    public NoteDtoRespond createNote(@RequestBody NoteDtoRequest noteDto) {
+        return noteService.createNote(noteDto);
     }
 
     @GetMapping("/{id}")
-    public Note getNoteById(@PathVariable Long id) {
+    public NoteDtoRespond getNoteById(@PathVariable Long id) {
         return noteService.getNoteById(id);
     }
 
     @GetMapping
-    public Iterable<Note> getAllNotes() {
+    public List<NoteDtoRespond> getAllNotes() {
         return noteService.getAllNotes();
     }
     
     @PutMapping("/{id}")
-    public Note updateNote(@PathVariable Long id, @RequestBody Note updatedNote) {
+    public NoteDtoRespond updateNote(@PathVariable Long id, @RequestBody NoteDtoRequest updatedNote) {
         return noteService.updateNote(id, updatedNote);
     }
 
     @PatchMapping("/{id}")
-    public Note patchNote(@PathVariable Long id, @RequestBody NoteDto noteDto) {
+    public NoteDtoRespond patchNote(@PathVariable Long id, @RequestBody NoteDtoRequest noteDto) {
         return noteService.patchNote(id, noteDto);
     }
 

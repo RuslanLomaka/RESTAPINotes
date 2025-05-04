@@ -1,25 +1,24 @@
 package com.lomaka.notes.service;
 
-import com.lomaka.notes.dto.NoteDto;
-import com.lomaka.notes.entity.Note;
+import com.lomaka.notes.dto.NoteDtoRequest;
+import com.lomaka.notes.dto.NoteDtoRespond;
+import java.util.List;
 import java.util.Map;
 import org.springframework.stereotype.Service;
 
 @Service
 public interface NoteService {
 
-    Note createNote(Note note);
+    NoteDtoRespond createNote(NoteDtoRequest note);
 
-    Note getNoteById(Long id);
+    NoteDtoRespond getNoteById(Long id);
 
-    Iterable<Note> getAllNotes();
+    List<NoteDtoRespond> getAllNotes();
 
-    Note updateNote(Long id, Note updatedNote);
+    NoteDtoRespond updateNote(Long id,NoteDtoRequest  updatedNote);
 
-    Note patchNote(Long id, NoteDto note);
+    NoteDtoRespond patchNote(Long id, NoteDtoRequest note);
 
     Map<String,String> deleteNoteById(Long id);
-
-
 
 }
