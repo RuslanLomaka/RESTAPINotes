@@ -23,3 +23,6 @@ jobs:
 
       - name: Build with Gradle
         run: ./gradlew build -x test
+
+      - name: Build with Docker Compose
+        run: docker compose build
