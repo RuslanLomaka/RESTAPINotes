@@ -47,6 +47,14 @@ jobs:
         run: |
           scp -o StrictHostKeyChecking=no -P 9999 notes-0.0.1-SNAPSHOT.jar ruslan@77.21.218.107:/home/ruslan/notes-app/app.jar
 
+      - name: Debug Confirm files
+        run: |
+          ssh -o StrictHostKeyChecking=no -p 9999 ruslan@77.21.218.107 << 'EOF'
+            cd notes-app
+            git pull origin master
+            ls -l Dockerfile
+          EOF
+
       - name: SSH and restart Docker on Pi
         run: |
           ssh -o StrictHostKeyChecking=no -p 9999 ruslan@77.21.218.107 << 'EOF'
