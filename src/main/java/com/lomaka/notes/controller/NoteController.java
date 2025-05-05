@@ -52,4 +52,9 @@ public class NoteController {
         return noteService.deleteNoteById(id);
     }
 
+    @GetMapping("/test")
+    public String test() {
+        return "CI/CD works";
+    }
+
 }
