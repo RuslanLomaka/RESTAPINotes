@@ -24,5 +24,8 @@ jobs:
       - name: Build with Gradle
         run: ./gradlew build -x test
 
+      - name: Install Docker Compose CLI v2
+        run: sudo apt-get update && sudo apt-get install docker-compose-plugin
+
       - name: Build with Docker Compose
         run: docker-compose build
