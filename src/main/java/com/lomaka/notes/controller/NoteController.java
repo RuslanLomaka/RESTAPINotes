@@ -54,7 +54,7 @@ public class NoteController {
 
     @GetMapping("/test")
     public String test() {
-        return "CI/CD works";
+        return "You're talking to a Raspberry Pi somewhere in Northern Germany 😎";
     }
 
 }
