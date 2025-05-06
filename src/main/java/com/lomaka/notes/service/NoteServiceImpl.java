@@ -1,7 +1,6 @@
 package com.lomaka.notes.service;
 
 import com.lomaka.notes.dto.NoteDtoRequest;
-import com.lomaka.notes.dto.NoteDtoRespond;
 import com.lomaka.notes.entity.Note;
 import com.lomaka.notes.repository.NoteRepository;
 import com.lomaka.notes.utils.NoteDtoMapper;
@@ -22,48 +21,45 @@ public class NoteServiceImpl implements NoteService {
     private final NoteDtoMapper noteDtoMapper;
 
     @Override
-    public NoteDtoRespond createNote(NoteDtoRequest noteDtoRequest) {
+    public Note createNote(NoteDtoRequest noteDtoRequest) {
         Note note = noteDtoMapper.toEntity(noteDtoRequest);
         note.setCreatedAt(LocalDateTime.now());
         noteRepository.save(note);
-        return noteDtoMapper.toRespondDto(note);
+        return note;
     }
 
     @Override
-    public NoteDtoRespond getNoteById(Long id) {
-        return noteDtoMapper.toRespondDto(
-                noteRepository.findById(id)
-                        .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, NOTE_NOT_FOUND))
-        );
+    public Note getNoteById(Long id) {
+        return noteRepository.findById(id)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, NOTE_NOT_FOUND));
     }
 
     @Override
-    public List<NoteDtoRespond> getAllNotes() {
+    public List<Note> getAllNotes() {
         return noteRepository.findAll().stream()
-                .map(noteDtoMapper::toRespondDto)
-                .toList();
+                             .toList();
     }
 
 
     @Override
-    public NoteDtoRespond updateNote(Long id, NoteDtoRequest updatedNote) {
+    public Note updateNote(Long id, NoteDtoRequest updatedNote) {
         return noteRepository.findById(id)
                 .map(note -> {
                     note.setTitle(updatedNote.getTitle());
                     note.setContent(updatedNote.getContent());
-                    return noteDtoMapper.toRespondDto(noteRepository.save(note));
+                    return noteRepository.save(note);
                 })
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, NOTE_NOT_FOUND));
     }
 
 
     @Override
-    public NoteDtoRespond patchNote(Long id, NoteDtoRequest noteDto) {
+    public Note patchNote(Long id, NoteDtoRequest noteDto) {
         return noteRepository.findById(id)
                 .map(note -> {
                     if (noteDto.getTitle() != null) note.setTitle(noteDto.getTitle());
                     if (noteDto.getContent() != null) note.setContent(noteDto.getContent());
-                    return noteDtoMapper.toRespondDto(noteRepository.save(note));
+                    return noteRepository.save(note);
                 })
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, NOTE_NOT_FOUND));
     }
