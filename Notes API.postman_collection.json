@@ -8,52 +8,125 @@
 	},
 	"item": [
 		{
-			"name": "POST new note",
+			"name": "GET test endpoint (ping)",
 			"request": {
 				"method": "GET",
-				"header": []
-			},
-			"response": []
-		},
-		{
-			"name": "GET note by ID",
-			"request": {
-				"method": "GET",
-				"header": []
-			},
-			"response": []
-		},
-		{
-			"name": "DELETE note by ID",
-			"request": {
-				"method": "GET",
-				"header": []
-			},
-			"response": []
-		},
-		{
-			"name": "PATCH title or content",
-			"request": {
-				"method": "GET",
-				"header": []
-			},
-			"response": []
+				"url": {
+					"raw": "https://notes.ruslanlomaka.org/notes/test",
+					"protocol": "https",
+					"host": ["notes", "ruslanlomaka", "org"],
+					"path": ["notes", "test"]
+				},
+				"description": "🧪 Simple health-check endpoint to verify server is running."
+			}
 		},
 		{
 			"name": "GET all notes",
 			"request": {
 				"method": "GET",
-				"header": []
-			},
-			"response": []
+				"url": {
+					"raw": "https://notes.ruslanlomaka.org/notes",
+					"protocol": "https",
+					"host": ["notes", "ruslanlomaka", "org"],
+					"path": ["notes"]
+				},
+				"description": "Retrieve all stored notes."
+			}
+		},
+		{
+			"name": "GET note by ID",
+			"request": {
+				"method": "GET",
+				"url": {
+					"raw": "https://notes.ruslanlomaka.org/notes/1",
+					"protocol": "https",
+					"host": ["notes", "ruslanlomaka", "org"],
+					"path": ["notes", "1"]
+				},
+				"description": "Fetch a single note by its ID."
+			}
+		},
+		{
+			"name": "POST new note",
+			"request": {
+				"method": "POST",
+				"url": {
+					"raw": "https://notes.ruslanlomaka.org/notes",
+					"protocol": "https",
+					"host": ["notes", "ruslanlomaka", "org"],
+					"path": ["notes"]
+				},
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"title\": \"My first note\",\n  \"content\": \"This is a sample note content.\"\n}"
+				},
+				"description": "Create a new note with title and content."
+			}
 		},
 		{
 			"name": "PUT update note's title and content by ID",
 			"request": {
-				"method": "GET",
-				"header": []
-			},
-			"response": []
+				"method": "PUT",
+				"url": {
+					"raw": "https://notes.ruslanlomaka.org/notes/1",
+					"protocol": "https",
+					"host": ["notes", "ruslanlomaka", "org"],
+					"path": ["notes", "1"]
+				},
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"title\": \"Updated title\",\n  \"content\": \"Updated full note content.\"\n}"
+				},
+				"description": "Fully update note's title and content by ID."
+			}
+		},
+		{
+			"name": "PATCH title or content",
+			"request": {
+				"method": "PATCH",
+				"url": {
+					"raw": "https://notes.ruslanlomaka.org/notes/1",
+					"protocol": "https",
+					"host": ["notes", "ruslanlomaka", "org"],
+					"path": ["notes", "1"]
+				},
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"title\": \"Patched title only\"\n}"
+				},
+				"description": "Partially update a note (e.g., just title or content)."
+			}
+		},
+		{
+			"name": "DELETE note by ID",
+			"request": {
+				"method": "DELETE",
+				"url": {
+					"raw": "https://notes.ruslanlomaka.org/notes/1",
+					"protocol": "https",
+					"host": ["notes", "ruslanlomaka", "org"],
+					"path": ["notes", "1"]
+				},
+				"description": "Remove a note by its ID."
+			}
 		}
 	]
 }

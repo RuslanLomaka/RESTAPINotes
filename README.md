@@ -48,7 +48,7 @@ This project is proudly self-hosted on a Raspberry Pi 4, running 24/7 at my home
 - **Java 17**
 - **Spring Boot**
 - **Spring Data JPA**
-- **PostgreSQL**
+- **Postgres SQL**
 - **Flyway** (for DB migration)
 - **Lombok**
 - **Gradle** (build system)
@@ -126,7 +126,7 @@ docker-compose up --build
 
 Once the containers are up, the backend will be accessible at:  
 🔗 **http://localhost:8080/notes/test**  
-✅ You should see a plain `"CI/CD works"` response.
+✅ You should see a plain text response.
 
 ### 🛑 Stop the containers
 ```bash
@@ -137,6 +137,6 @@ docker-compose down
 
 ## 🧪 Postman Testing
 
-A Postman collection is included for testing all endpoints. You can import it into Postman to explore all API routes with example requests and responses.
+A Postman collection is included for testing all endpoints in the root folder of the project. You can import it into Postman to explore all API routes with example requests and responses.
 
 ---
