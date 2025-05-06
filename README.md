@@ -138,5 +138,12 @@ docker-compose down
 ## 🧪 Postman Testing
 
 A Postman collection is included for testing all endpoints in the root folder of the project. You can import it into Postman to explore all API routes with example requests and responses.
+🔗**https://github.com/RuslanLomaka/RESTAPINotes/blob/master/Notes%20API.postman_collection.json**
 
 ---
+
+## 🛣️ 🗺️ Roadmap
+
+Check out to see my current progress on this project in the last update of roadmap.md
+🔗**https://github.com/RuslanLomaka/RESTAPINotes/blob/master/roadmap.md**
+
