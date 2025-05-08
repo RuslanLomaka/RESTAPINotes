@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class AdminServiceImpl implements AdminService {
     private final EmailService emailService;
+
     @Override
     public Map<String, String> deleteUserById(Long id) {
         return Map.of();
