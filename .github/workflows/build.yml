@@ -8,18 +8,36 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
-    # ❶ ──────────────── Environment variables for the whole job
-    #     • The public URL is *not* a secret, so we can hard-code it here.
-    #     • Later, if you move to another domain, you only change the value
-    #       below (or pull it from repo / org secrets).
+    # ❶ Environment variables for the whole job
+    #    • APP_BASE_URL is public, so we hard-code it here for now.
     env:
-      APP_BASE_URL: https://notes.ruslanlomaka.org    # <- no comma/period
+      APP_BASE_URL: https://notes.ruslanlomaka.org
       SPRING_EMAIL_USERNAME: ${{ secrets.SPRING_EMAIL_USERNAME }}
       SPRING_EMAIL_PASSWORD: ${{ secrets.SPRING_EMAIL_PASSWORD }}
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
+
+      # 🔻 Write .env for Spring Boot & Docker from your secrets
+      - name: Write .env for Spring Boot & Docker
+        run: |
+          cat > .env <<'EOF'
+          # public URL
+          APP_BASE_URL=${{ env.APP_BASE_URL }}
+
+          # JWT
+          NOTES_JWT_SECRET=${{ secrets.NOTES_JWT_SECRET }}
+
+          # Postgres
+          SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/notesdb
+          SPRING_DATASOURCE_USERNAME=${{ secrets.SPRING_DATASOURCE_USERNAME }}
+          SPRING_DATASOURCE_PASSWORD=${{ secrets.SPRING_DATASOURCE_PASSWORD }}
+
+          # Mail
+          SPRING_EMAIL_USERNAME=${{ env.SPRING_EMAIL_USERNAME }}
+          SPRING_EMAIL_PASSWORD=${{ env.SPRING_EMAIL_PASSWORD }}
+          EOF
 
       - name: Set up JDK 17
         uses: actions/setup-java@v3
