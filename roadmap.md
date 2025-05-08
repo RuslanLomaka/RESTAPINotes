@@ -44,6 +44,7 @@ It was designed with clear intention to keep the architecture clean, scalable, a
 - ⬜ Improve UI styling with CSS or Bootstrap
 - ⬜ Write full test suite (unit + integration)
 - ⬜ Expand CI/CD: enforce passing tests before push or deploy
+- ⬜ Replace Cloudflare tunneling with Nginx for SSL and HTTPS
 - ⬜ Final deployment as a Docker container on Raspberry Pi
 
 ---

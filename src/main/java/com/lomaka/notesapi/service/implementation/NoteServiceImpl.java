@@ -1,9 +1,10 @@
-package com.lomaka.notes.service;
+package com.lomaka.notesapi.service.implementation;
 
-import com.lomaka.notes.dto.NoteDtoRequest;
-import com.lomaka.notes.entity.Note;
-import com.lomaka.notes.repository.NoteRepository;
-import com.lomaka.notes.utils.NoteDtoMapper;
+import com.lomaka.notesapi.dto.NoteDtoRequest;
+import com.lomaka.notesapi.model.Note;
+import com.lomaka.notesapi.repository.NoteRepository;
+import com.lomaka.notesapi.service.NoteService;
+import com.lomaka.notesapi.maper.NoteDtoMapper;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Map;
@@ -16,7 +17,6 @@ import org.springframework.web.server.ResponseStatusException;
 @Service
 public class NoteServiceImpl implements NoteService {
     private static final String NOTE_NOT_FOUND = "Note not found";
-
     private final NoteRepository noteRepository;
     private final NoteDtoMapper noteDtoMapper;
 

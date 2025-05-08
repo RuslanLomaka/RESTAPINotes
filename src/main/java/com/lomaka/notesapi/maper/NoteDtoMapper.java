@@ -1,9 +1,10 @@
-package com.lomaka.notes.utils;
+package com.lomaka.notesapi.maper;
 
 
-import com.lomaka.notes.dto.NoteDtoRequest;
-import com.lomaka.notes.dto.NoteDtoRespond;
-import com.lomaka.notes.entity.Note;
+import com.lomaka.notesapi.dto.NoteDtoAdminView;
+import com.lomaka.notesapi.dto.NoteDtoRequest;
+import com.lomaka.notesapi.dto.NoteDtoRespond;
+import com.lomaka.notesapi.model.Note;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -24,4 +25,14 @@ public class NoteDtoMapper {
         noteDtoRespond.setCreatedAt(note.getCreatedAt());
         return noteDtoRespond;
     }
+
+    public NoteDtoAdminView toAdminViewDto(Note note) {
+        NoteDtoAdminView dto = new NoteDtoAdminView();
+        dto.setId(note.getId());
+        dto.setUserId(note.getUser().getId());
+        dto.setCreatedAt(note.getCreatedAt());
+        dto.setShared(note.isShared());
+        return dto;
+    }
+
 }

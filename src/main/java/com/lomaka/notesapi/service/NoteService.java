@@ -1,7 +1,7 @@
-package com.lomaka.notes.service;
+package com.lomaka.notesapi.service;
 
-import com.lomaka.notes.dto.NoteDtoRequest;
-import com.lomaka.notes.entity.Note;
+import com.lomaka.notesapi.dto.NoteDtoRequest;
+import com.lomaka.notesapi.model.Note;
 import java.util.List;
 import java.util.Map;
 import org.springframework.stereotype.Service;

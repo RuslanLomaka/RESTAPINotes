@@ -1,6 +1,6 @@
-package com.lomaka.notes.dto;
+package com.lomaka.notesapi.dto;
 
-import java.time.LocalDateTime;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -10,9 +10,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class NoteDtoRespond {
-    private Long id;
+public class NoteDtoRequest {
     private String title;
     private String content;
-    private LocalDateTime createdAt;
 }

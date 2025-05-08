@@ -1,9 +1,9 @@
-package com.lomaka.notes.controller;
+package com.lomaka.notesapi.controller;
 
-import com.lomaka.notes.dto.NoteDtoRequest;
-import com.lomaka.notes.dto.NoteDtoRespond;
-import com.lomaka.notes.service.NoteService;
-import com.lomaka.notes.utils.NoteDtoMapper;
+import com.lomaka.notesapi.dto.NoteDtoRequest;
+import com.lomaka.notesapi.dto.NoteDtoRespond;
+import com.lomaka.notesapi.service.NoteService;
+import com.lomaka.notesapi.maper.NoteDtoMapper;
 import java.util.List;
 import java.util.Map;
 import lombok.RequiredArgsConstructor;
