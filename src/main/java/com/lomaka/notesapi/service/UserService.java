@@ -7,7 +7,10 @@ import java.util.Map;
 
 public interface UserService {
     Map<String, String> register(UserDtoRequest request);
+
     Map<String, String> login(UserDtoLoginRequest request);
+
     UserDtoRespond getCurrentUser();
+
     Map<String, String> confirmUser(String token);
 }

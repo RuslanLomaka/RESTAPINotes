@@ -22,5 +22,5 @@ public class AdminServiceImpl implements AdminService {
     public List<UserDtoAdminView> getAllUsers() {
         return List.of();
     }
-    // Implement admin service methods
+    // Implement admin service methods ok
 }
