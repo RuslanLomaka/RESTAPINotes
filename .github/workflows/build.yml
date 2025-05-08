@@ -1,0 +1,45 @@
+name: Build on Push
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    # ❶ ──────────────── Environment variables for the whole job
+    #     • The public URL is *not* a secret, so we can hard-code it here.
+    #     • Later, if you move to another domain, you only change the value
+    #       below (or pull it from repo / org secrets).
+    env:
+      APP_BASE_URL: https://notes.ruslanlomaka.org    # <- no comma/period
+      SPRING_EMAIL_USERNAME: ${{ secrets.SPRING_EMAIL_USERNAME }}
+      SPRING_EMAIL_PASSWORD: ${{ secrets.SPRING_EMAIL_PASSWORD }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Grant execute permission for Gradle wrapper
+        run: chmod +x gradlew
+
+      - name: Build with Gradle
+        run: ./gradlew build -x test
+
+      - name: Install Docker Compose CLI v2
+        run: |
+          sudo mkdir -p /usr/local/lib/docker/cli-plugins
+          sudo curl -SL \
+            https://github.com/docker/compose/releases/download/v2.27.0/docker-compose-linux-x86_64 \
+            -o /usr/local/lib/docker/cli-plugins/docker-compose
+          sudo chmod +x /usr/local/lib/docker/cli-plugins/docker-compose
+
+      - name: Build with Docker Compose
+        run: docker compose build
