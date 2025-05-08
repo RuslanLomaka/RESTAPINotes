@@ -3,6 +3,7 @@ package com.lomaka.notesapi.service.implementation;
 import com.lomaka.notesapi.dto.UserDtoLoginRequest;
 import com.lomaka.notesapi.dto.UserDtoRequest;
 import com.lomaka.notesapi.dto.UserDtoRespond;
+import com.lomaka.notesapi.maper.UserDtoMapper;
 import com.lomaka.notesapi.model.Role;
 import com.lomaka.notesapi.model.User;
 import com.lomaka.notesapi.repository.UserRepository;
@@ -28,7 +29,7 @@ public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
     private final JwtService jwtService;
-    private final com.lomaka.notesapi.mapper.UserDtoMapper userDtoMapper;
+    private final UserDtoMapper userDtoMapper;
     private final EmailService emailService;
     private final AuthenticationManager authenticationManager;
 

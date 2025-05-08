@@ -34,7 +34,7 @@ public class SecurityConfig {
 
                 /* 2️⃣ –‑ open the two public endpoints */
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/users/register", "/users/confirm", "/users/login").permitAll()
+                        .requestMatchers("/users/register", "/users/confirm", "/users/login", "/test").permitAll()
                         .anyRequest().authenticated())
                 .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
         return http.build();
