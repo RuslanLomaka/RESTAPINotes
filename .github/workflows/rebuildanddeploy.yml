@@ -48,7 +48,10 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: app-jar
-
+      - name: Show workspace contents
+        run: |
+          pwd
+          ls -R .
       - name: Copy JAR to Raspberry Pi
         run: |
           scp -o StrictHostKeyChecking=no -P 9999 build/libs/*.jar \
