@@ -2,148 +2,128 @@
 
 ## 📘 Project Overview
 
-**What:**  
-A simple REST API for managing personal notes. Users can create, read, update, partially update, and delete notes using HTTP requests.
+**What:**
+A simple REST API for managing personal notes, now with user registration and JWT-based authentication.
 
-**Why:**  
-Built as part of a learning journey to gain hands-on experience with backend development, REST principles, and working with PostgreSQL and Spring Boot.
+**Why:**
+Built as part of a learning journey to gain hands-on experience with backend development, REST principles, and working with PostgreSQL and Spring Boot. After integrating the user entity and JWT security token feature, it was a true debugging hell—but the satisfaction from success outweighed all expectations! 🚀
 
-**Who:**  
-Developed by Ruslan Lomaka — Java learner exploring backend development through real projects and Postman tears of joy.
+**Who:**
+Developed by Ruslan Lomaka — Java learner exploring backend development through real projects (and plenty of Postman tears of joy).
 
 ---
-## 📡 Deployment & Hosting
 
-This project is proudly self-hosted on a Raspberry Pi 4, running 24/7 at my home.
+> **Note:** This README is still a work in progress. Full documentation—particularly on authentication flows and environment configuration—will arrive soon.
 
-### ⚙️ CI/CD Pipeline
-- Built using **GitHub Actions**, configured with a two-step workflow:
-  - `build`: compiles the app and prepares the JAR
-  - `deploy`: connects to my Raspberry Pi via SSH, pulls the latest code, rebuilds Docker containers, and restarts the service
-- Deployments happen automatically every time I push to the `master` branch.
+---
 
-### 🌐 Cloudflare Tunnel
-- To make my Raspberry Pi accessible from the internet, I configured a **Cloudflare Tunnel**, providing a secure, persistent public HTTPS address:
-  
-  🔗 [https://notes.ruslanlomaka.org/notes/test](https://notes.ruslanlomaka.org/notes/test)
+## 📂 Table of Contents
 
-> I set this up completely from scratch, including key management, Docker networking, and GitHub secrets — just press "Push" and the app rebuilds and redeploys itself ✨
+1. [Features](#✨-features)
+2. [API Endpoints](#📬-api-endpoints)
+3. [Authentication & Postman Usage](#🔐-authentication--postman-usage)
+4. [Tech Stack](#🛠-tech-stack)
+5. [Deployment](#🚚-deployment)
+6. [Roadmap](#🛣-roadmap)
+
+---
 
 ## ✨ Features
 
-- Create new notes
-- Retrieve all or single note by ID
-- Update note (PUT)
-- Partially update note (PATCH)
-- Delete note
-- Returns proper HTTP status codes and error messages
-- Uses DTO for PATCH requests
-- Postman collection for testing included
+* **User Management:** Register, confirm, and log in
+* **JWT Security:** Protected endpoints with HMAC-SHA256 tokens
+* **Notes CRUD:** Create, read, update (PUT), partial update (PATCH), and delete notes
+* **DTO Validation:** Strong request/response models
+* **Flyway Migrations:** Versioned DB schema
+* **CI/CD Pipeline:** Automated via GitHub Actions to Raspberry Pi
+* **Self-Hosted:** Runs on Raspberry Pi with Cloudflare Tunnel for HTTPS
+
+---
+
+## 📬 API Endpoints
+
+### Public (no auth)
+
+| Method | Endpoint                       | Description               |
+| ------ | ------------------------------ | ------------------------- |
+| POST   | `/users/register`              | Create a new user         |
+| GET    | `/users/confirm?token={token}` | Confirm email address     |
+| POST   | `/users/login`                 | Authenticate, receive JWT |
+
+### Protected (bearer token required)
+
+| Method | Endpoint      | Description             | Request Body                  |
+| ------ | ------------- | ----------------------- | ----------------------------- |
+| POST   | `/notes`      | Create a new note       | `{ title, content }`          |
+| GET    | `/notes/{id}` | Get a note by ID        | –                             |
+| GET    | `/notes`      | Get all notes           | –                             |
+| PUT    | `/notes/{id}` | Replace entire note     | `{ title, content }`          |
+| PATCH  | `/notes/{id}` | Partially update fields | Optional `title` or `content` |
+| DELETE | `/notes/{id}` | Delete note by ID       | –                             |
+| GET    | `/notes/test` | Health check (debug)    | –                             |
+
+---
+
+## 🔐 Authentication & Postman Usage
+
+1. **Register** a new user via `POST /users/register` with JSON:
+
+   ```json
+   {
+     "username": "johndoe",
+     "password": "Secret123!"
+   }
+   ```
+2. **Confirm** your email by visiting the link sent (or `GET /users/confirm?token=…`).
+3. **Login** with `POST /users/login`:
+
+   ```json
+   {
+     "username": "johndoe",
+     "password": "Secret123!"
+   }
+   ```
+
+   Response returns:
+
+   ```json
+   { "token": "<JWT_TOKEN_HERE>" }
+   ```
+4. In **Postman**, set **Authorization** ➡️ **Bearer Token** and paste your `<JWT_TOKEN_HERE>`.
+5. Now call any protected endpoint (e.g. `GET /notes`) and enjoy!
+
+> Tip: Save your JWT as an environment variable in Postman for easy reuse (e.g., `{{jwt_token}}`).
 
 ---
 
 ## 🛠 Tech Stack
 
-
-- **Java 17**
-- **Spring Boot**
-- **Spring Data JPA**
-- **Postgres SQL**
-- **Flyway** (for DB migration)
-- **Lombok**
-- **Gradle** (build system)
-- **Docker** (containerization)
-- **docker-compose** (multi-container orchestration)
-- **Postman** (for API testing)
-- **GitHub Actions** (for CI/CD pipeline)
-- **Cloudflare Tunnel** *(for remote HTTPS access – optional, not needed for local deployment)*
----
-
-## 📬 API Endpoints
-
-| Method | Endpoint        | Description             | Request Body                  |
-|--------|-----------------|-------------------------|-------------------------------|
-| POST   | `/notes`        | Create a new note       | `title`, `content`            |
-| GET    | `/notes/{id}`   | Get a note by ID        | –                             |
-| GET    | `/notes`        | Get all notes           | –                             |
-| PUT    | `/notes/{id}`   | Update entire note      | `title`, `content`            |
-| PATCH  | `/notes/{id}`   | Partially update fields | Optional `title` or `content` |
-| DELETE | `/notes/{id}`   | Delete note by ID       | –                             |
+* **Java 17**
+* **Spring Boot**
+* **Spring Data JPA**
+* **PostgreSQL**
+* **Flyway** (DB migrations)
+* **Lombok**, **Gradle**
+* **Docker & Docker Compose**
+* **GitHub Actions** CI/CD
+* **Cloudflare Tunnel** *(optional for HTTPS)*
 
 ---
 
-## 🧾 Sample JSON for Saving a Note
+## 🚚 Deployment
 
-```json
-{
-  "title": "Meeting Notes",
-  "content": "Discuss quarterly targets and budget."
-}
-```
+> Deployment instructions have been moved to **[DEPLOYMENT.md](./DEPLOYMENT.md)**.
 
 ---
 
-## 🛢️ PostgreSQL Setup
+## 🛣 Roadmap
 
-Before running the app, make sure you have a local PostgreSQL server running.
-
-### 🧩 Create Database and User
-
-```sql
--- Step 1: Create the database and user (run from any DB, like 'postgres')
-CREATE DATABASE notesdb;
-CREATE USER notes_user WITH PASSWORD 'yourpassword';
-
--- Step 2: Connect to the newly created database
-\c notesdb;
-
--- Step 3: Grant privileges inside that DB
-GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO notes_user;
-GRANT ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA public TO notes_user;
-GRANT ALL PRIVILEGES ON ALL FUNCTIONS IN SCHEMA public TO notes_user;
-```
+* [ ] Complete API documentation (OpenAPI/Swagger)
+* [ ] Add user roles & permissions
+* [ ] Implement password reset flows
+* [ ] Frontend integration (React/Vue)
+* [ ] Automated integration tests in CI
 
 ---
 
-## 🐳 Docker Deployment
-
-This project includes a `Dockerfile` and a `docker-compose.yml` file for easy deployment.
-
-### 📂 Files:
-- `Dockerfile` — builds the Spring Boot application
-- `docker-compose.yml` — launches the app with a PostgreSQL container
-
-### 🚀 Run the App
-
-```bash
-# 1. Clone the repository
-git clone https://github.com/RuslanLomaka/RESTAPINotes.git
-cd RESTAPINotes
-
-# 2. Build and start the containers
-docker-compose up --build
-```
-
-Once the containers are up, the backend will be accessible at:  
-🔗 **http://localhost:8080/notes/test**  
-✅ You should see a plain text response.
-
-### 🛑 Stop the containers
-```bash
-docker-compose down
-```
-
----
-
-## 🧪 Postman Testing
-
-A Postman collection is included for testing all endpoints in the root folder of the project. You can import it into Postman to explore all API routes with example requests and responses.
-🔗**https://github.com/RuslanLomaka/RESTAPINotes/blob/master/Notes%20API.postman_collection.json**
-
----
-
-## 🛣️ 🗺️ Roadmap
-
-Check out to see my current progress on this project in the last update of roadmap.md
-🔗**https://github.com/RuslanLomaka/RESTAPINotes/blob/master/roadmap.md**
-
+*Thanks for stopping by!* Feel free to raise issues or send pull requests. 😊
