@@ -11,5 +11,6 @@ import lombok.Setter;
 @AllArgsConstructor
 public class NoteDtoRequest {
     private String title;
+
     private String content;
 }
