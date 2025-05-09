@@ -51,8 +51,8 @@ jobs:
 
       - name: Copy JAR to Raspberry Pi
         run: |
-          scp -o StrictHostKeyChecking=no -P 9999 *.jar \
-          ruslan@77.21.218.107:/home/ruslan/notes-app/app.jar
+          scp -o StrictHostKeyChecking=no -P 9999 notes-0.0.1-SNAPSHOT.jar \
+            ruslan@77.21.218.107:/home/ruslan/notes-app/app.jar
 
       - name: Restart Docker Compose on Pi
         run: |
