@@ -18,10 +18,11 @@ services:
     container_name: notes-api
     depends_on:
       - postgres
-    environment:
-      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/notesdb
-      SPRING_DATASOURCE_USERNAME: notesuser
-      SPRING_DATASOURCE_PASSWORD: notespass
+
+    # ← load ALL your .env vars here (including NOTES_JWT_SECRET etc)
+    env_file:
+      - .env
+
     ports:
       - "8080:8080"
 
