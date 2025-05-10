@@ -2,10 +2,8 @@ package com.lomaka.notesapi.controller;
 
 import com.lomaka.notesapi.dto.NoteDtoRequest;
 import com.lomaka.notesapi.dto.NoteDtoRespond;
-import com.lomaka.notesapi.service.NoteService;
 import com.lomaka.notesapi.maper.NoteDtoMapper;
-import java.util.List;
-import java.util.Map;
+import com.lomaka.notesapi.service.NoteService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,6 +14,9 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/notes")
