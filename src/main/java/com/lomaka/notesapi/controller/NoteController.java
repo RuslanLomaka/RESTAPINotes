@@ -59,7 +59,9 @@ public class NoteController {
 
     @GetMapping("/test")
     public String test() {
-        return "You're talking to a Raspberry Pi somewhere in Northern Germany 😎";
+        return "You're talking to a Raspberry Pi somewhere in Northern Germany 😎 " +
+                "**⚡ Documentation:** All details, request/response schemas, and try-it-out features are now live in Swagger UI:  \n" +
+                "> \uD83D\uDD17 https://notes.ruslanlomaka.org/swagger-ui/index.html";
     }
 
 }

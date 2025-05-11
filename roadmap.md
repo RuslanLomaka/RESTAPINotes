@@ -12,42 +12,39 @@ It was designed with clear intention to keep the architecture clean, scalable, a
 - ✅ Configured PostgreSQL and Flyway for database migrations
 - ✅ Implemented basic CRUD for `Note`
 - ✅ Tested endpoints using Postman
+- ✅ Integrated Swagger UI / OpenAPI for interactive API documentation
+- ✅ Added `User` entity, registration, email confirmation & JWT-based authentication
+- ✅ Secured endpoints with HMAC-SHA256 JWT tokens
 - ✅ Docker-ready structure for efficient Raspberry Pi deployment
 - ✅ Connected Cloudflare Tunnel to host the project from a Raspberry Pi
-- ✅ Made the project globally accessible via `RuslanLomaka.org`
-- ✅ Set up CI/CD pipeline via GitHub Actions:
-    - ✅ On push to `master`, GitHub Actions compiles and builds the project
-    - ✅ SSH connection to Raspberry Pi is established from GitHub runner
-    - ✅ The new build is uploaded to Raspberry Pi and replaces the old one
-    - ✅ Docker container is restarted to apply the latest version
+- ✅ Made the project globally accessible via `notes.ruslanlomaka.org`
+- ✅ Set up GitHub Actions CI/CD pipeline: build on push → SSH deploy to Pi → restart Docker
+- ✅ Integrated Swagger/OpenAPI documentation via Swagger UI (available at `/swagger-ui/index.html`)
 
 ---
 
-### 🟡 **Currently, I am here**
+### 🟡 Currently, I am here
 
-- 🟡 Implementing `User` entity and authentication system
-- 🟡 Preparing Thymeleaf-based UI integration
-- 🟡 Laying foundation for CI with test coverage
+- 🟡 Developing Thymeleaf-based web UI integration
+- 🟡 Writing integration tests and expanding CI coverage
+- 🟡 Planning a homelab expansion: install Linux on an old smartphone for microservice experiments alongside the Pi
 
 ---
 
 ### ⬜ Upcoming features and improvements
 
-- ⬜ Add user login & registration via Thymeleaf
 - ⬜ Secure notes per user (private ownership)
-- ⬜ Create full Thymeleaf UI (list, create, edit, delete notes)
-- ⬜ Add search, filters, and tags for better UX
-- ⬜ Include note expiration/reminder system
+- ⬜ Build full Thymeleaf UI pages: list, create, edit, delete notes
+- ⬜ Add search, filters, tags for better UX
+- ⬜ Implement note expiration/reminder system
 - ⬜ Add note versioning and view statistics
 - ⬜ Toggle public/private notes with shareable links
 - ⬜ Optional: integrate AI for auto-tagging or note suggestions
-- ⬜ Improve UI styling with CSS or Bootstrap
-- ⬜ Write full test suite (unit + integration)
-- ⬜ Expand CI/CD: enforce passing tests before push or deploy
-- ⬜ Replace Cloudflare tunneling with Nginx for SSL and HTTPS
-- ⬜ Final deployment as a Docker container on Raspberry Pi
+- ⬜ Improve UI styling with CSS/Bootstrap
+- ⬜ Expand microservice architecture using second device
+- ⬜ Replace Cloudflare Tunnel with Nginx for SSL/HTTPS
+- ⬜ Enforce passing tests in CI before deployment
 
 ---
 
-🧠 *Update this file daily to track progress and stay focused.*  
-🧰 *Goal: A clean, professional-grade full-stack notes app hosted on your own hardware.*
+🧠 *Update this roadmap regularly to track progress and stay focused.*  
