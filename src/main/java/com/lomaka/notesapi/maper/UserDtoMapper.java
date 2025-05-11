@@ -28,6 +28,7 @@ public class UserDtoMapper {
         return dto;
     }
 
+
     public UserDtoAdminView toAdminViewDto(User user) {
         UserDtoAdminView dto = new UserDtoAdminView();
         dto.setId(user.getId());
