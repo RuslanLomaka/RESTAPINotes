@@ -4,9 +4,10 @@ import com.lomaka.notesapi.dto.UserDtoAdminView;
 import com.lomaka.notesapi.dto.UserDtoRequest;
 import com.lomaka.notesapi.dto.UserDtoRespond;
 import com.lomaka.notesapi.model.User;
+import org.springframework.stereotype.Component;
+
 import java.util.List;
 import java.util.stream.Collectors;
-import org.springframework.stereotype.Component;
 
 @Component
 public class UserDtoMapper {
