@@ -44,11 +44,20 @@ public class SecurityConfig {
                                 "/notes/test"
                         ).permitAll()
 
+                        .requestMatchers(   //resources
+                                "/views/**",           //
+                                "/templates/**",       //
+                                "/static/**"          //
+                        ).permitAll()
+
                         // swagger + OpenAPI json
                         .requestMatchers(
-                                "/swagger-ui.html",
+                                "/v3/api-docs/**",
                                 "/swagger-ui/**",
-                                "/webjars/**"
+                                "/swagger-ui.html",
+                                "/webjars/**",
+                                "/api-docs/**"
+
                         ).permitAll()
 
                         // 2) the OpenAPI JSON (and config)

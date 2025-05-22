@@ -40,7 +40,6 @@ public class NoteServiceImpl implements NoteService {
                              .toList();
     }
 
-
     @Override
     public Note updateNote(Long id, NoteDtoRequest updatedNote) {
         return noteRepository.findById(id)
@@ -51,7 +50,6 @@ public class NoteServiceImpl implements NoteService {
                 })
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, NOTE_NOT_FOUND));
     }
-
 
     @Override
     public Note patchNote(Long id, NoteDtoRequest noteDto) {
