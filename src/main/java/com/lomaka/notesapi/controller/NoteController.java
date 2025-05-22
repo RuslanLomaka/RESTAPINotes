@@ -53,19 +53,17 @@ public class NoteController {
     @GetMapping("/test")
     public String test() {
         return "<!DOCTYPE html>\n" +
-                "<html xmlns:th=\"http://www.thymeleaf.org\">\n" +
+                "<html>\n" +
                 "<head>\n" +
                 "    <title>Test Page</title>\n" +
                 "</head>\n" +
                 "<body>\n" +
-                "<h1>Test Template</h1>\n" +
-                "<p>\"You're talking to a Raspberry Pi somewhere in Northern Germany \uD83D\uDE0E \" +\n" +
-                "    \"**⚡ Documentation:** All details, request/response schemas, and try-it-out features are now live in Swagger UI:  \\n\" +\n" +
-                "    \"> \\uD83D\\uDD17 https://notes.ruslanlomaka.org/swagger-ui/index.html\";\n" +
-                "</p>\n" +
+                "    <h1>Test Template</h1>\n" +
+                "    <p>You're talking to a Raspberry Pi somewhere in Northern Germany 😎</p>\n" +
+                "    <p><strong>⚡ Documentation:</strong> All details, request/response schemas, and try-it-out features are now live in Swagger UI:</p>\n" +
+                "    <p><a href=\"https://notes.ruslanlomaka.org/swagger-ui/index.html\" target=\"_blank\">🔗 Swagger UI</a></p>\n" +
                 "</body>\n" +
                 "</html>";
-
     }
 
 }
