@@ -54,6 +54,7 @@ jobs:
           scp -o StrictHostKeyChecking=no -P 9999 notes-0.0.1-SNAPSHOT.jar \
             ruslan@188.194.162.213:/home/ruslan/notes-app/app.jar
 
+
       - name: Restart Docker Compose on Pi
         run: |
           ssh -o StrictHostKeyChecking=no -p 9999 ruslan@188.194.162.213 << 'EOF'
